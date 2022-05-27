@@ -34,11 +34,11 @@ class Solution {
         {
             return idx;
         }
-        if(nums[idx]>target)
+        if(nums[idx]<target)
         {
-          return idx;
+          return idx+1;
         }
-        return idx+1;
+        return idx;
         
     }
 }
