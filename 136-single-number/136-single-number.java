@@ -7,7 +7,7 @@ class Solution {
             hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
         }
         
-        System.out.println(hm);
+        // System.out.println(hm);
         
         for(Integer Key : hm.keySet())
         {
