@@ -6,11 +6,11 @@ class Solution {
     {
         grid[i][j]='0';
         
-        for(int k = 0 ; k<dir.length ;k++)
+        for(int d[] : dir)
         {
 
-            int row = i  +  dir[k][0];
-            int col = j  +  dir[k][1];
+            int row = i  +  d[0];
+            int col = j  +  d[1];
             
             if(row>=0 && col>=0 && row<grid.length && col<grid[0].length && grid[row][col]=='1')
             {
