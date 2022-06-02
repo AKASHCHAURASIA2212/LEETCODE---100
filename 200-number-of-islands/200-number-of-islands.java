@@ -1,10 +1,11 @@
 class Solution {
     
+    static int[][] dir = {{-1,0},{0,-1},{1,0},{0,1}};
+
     public void jump(int i,int j,char[][] grid)
     {
         grid[i][j]='0';
         
-       int[][] dir = {{-1,0},{0,-1},{1,0},{0,1}};
         for(int k = 0 ; k<dir.length ;k++)
         {
 
