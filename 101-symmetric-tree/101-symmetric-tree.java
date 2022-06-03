@@ -15,57 +15,38 @@
  */
 class Solution {
     
-    
-        public boolean isSameTree(TreeNode p, TreeNode q) {
-        Queue<TreeNode> qu1 = new LinkedList<>();
-        Queue<TreeNode> qu2 = new LinkedList<>();
-        qu1.add(p);
-        qu2.add(q);
-        
-        while(qu1.size()>0 && qu2.size()>0)
+    public boolean isSimiler(TreeNode x,TreeNode y)
+    {
+      if(x==null && y==null)
+      {
+          return true;
+      }
+        if(x!=null || y!=null)
         {
-            TreeNode root1 = qu1.remove();
-            TreeNode root2 = qu2.remove();
-            
-            if(root1==null && root2!=null || root2==null && root1!=null)
-            {
-                return false ; 
-            }
-            
-            if(root1==null && root2==null)
-            {
-                continue;
-            }
-            
-            if(root1.val==root2.val)
-            {
-                qu1.add(root1.left);
-                qu1.add(root1.right);
-                qu2.add(root2.right); 
-                qu2.add(root2.left);
-                 
-            }
-            
-            else
+            if(x!=null && y==null || y!=null && x==null)
             {
                 return false;
-            }       
-        }
-        
-        if(qu1.size()!=qu2.size())
-        {
+            }
+            
+            if(x.val!=y.val)
+            {
+
             return false;
+            
+            }
+            
+            return isSimiler(x.left,y.right) && isSimiler(x.right,y.left);
         }
         
-        return true;
-        
+        return false;
     }
-    
     public boolean isSymmetric(TreeNode root) {
+     
         if(root==null)
         {
           return false;
         }
-        return isSameTree(root,root);
+        
+        return isSimiler(root.left,root.right);
     }
 }
