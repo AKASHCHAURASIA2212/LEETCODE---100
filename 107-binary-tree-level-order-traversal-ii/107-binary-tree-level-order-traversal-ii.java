@@ -73,6 +73,43 @@ class Solution {
         return list;
         
     }
+    
+//           public List<List<Integer>> LevelOrder(TreeNode node,List<List<Integer>> list) 
+//     {
+          
+  
+//         Queue<TreeNode> qu = new LinkedList<>();
+//         qu.add(node);
+        
+//         while(qu.size()>0)
+//         {
+//             int size = qu.size();
+//              List<Integer> li = new ArrayList<>();
+//             while(size-->0)
+//             {
+                
+//                 TreeNode temp = qu.remove();
+//                 li.add(temp.val);
+                
+//                  if(temp.right!=null)
+//                 {
+//                     qu.add(temp.right);
+//                 }
+                
+//                 if(temp.left!=null)
+//                 {
+//                     qu.add(temp.left);
+//                 }
+//             }
+//             list.add(li);
+//         }
+          
+//           System.out.println(list);
+        
+//         return list;
+        
+//     }
+    
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         
         List<List<Integer>> list = new ArrayList<>();
@@ -83,6 +120,15 @@ class Solution {
         }
         
         return LevelOrder(root,list);
+//         List<List<Integer>> myAns = new ArrayList<>();
+        
+//         while(lot.size()>0)
+//         {
+//             myAns.add(lot.remove(lot.size()-1));
+//         }
+        
+//         return myAns;
+        
         
     }
 }
