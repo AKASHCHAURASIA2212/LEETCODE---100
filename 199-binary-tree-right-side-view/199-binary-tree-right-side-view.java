@@ -14,35 +14,43 @@
  * }
  */
 class Solution {
-    
-    static int hi = -1 ; 
-     public void sideView(TreeNode root,List<Integer> li,int myhi)
-     {
-           if(root==null)
-           {
-               return;
-           }
-         
-         if(myhi>hi)
-         {
-            li.add(root.val);
-             hi = myhi;
-         }
-         sideView(root.right,li,myhi+1);
-         sideView(root.left,li,myhi+1);
-         
-         // sideView(root.left,li);
-     }
-    public List<Integer> rightSideView(TreeNode root) {
-        hi=-1;
-         List<Integer> li = new ArrayList<>();
-        
-        if(root==null)
-        {
-           return li ; 
-        }
-       
-        sideView(root,li,0);
-        return li;
+      public List<Integer> rightSideView(TreeNode root)
+    {
+      List<Integer> list = new ArrayList<Integer>();
+      
+      Queue<TreeNode> qu = new LinkedList<>();
+      
+      if(root==null)
+      {
+          return list;
+      }
+      qu.add(root);
+      
+      while(qu.size()>0)
+      {
+          int size  = qu.size();
+          
+          for(int i = 0 ;i < size ; i++)
+          {
+              TreeNode temp = qu.remove();
+              
+              if(i==size-1)
+              {
+                  list.add(temp.val);
+              }
+              
+              if(temp.left!=null)
+              {
+                  qu.add(temp.left);
+              }
+              
+              if(temp.right!=null)
+              {
+                  qu.add(temp.right);
+              }
+          }
+      }
+      
+      return list;
     }
 }
