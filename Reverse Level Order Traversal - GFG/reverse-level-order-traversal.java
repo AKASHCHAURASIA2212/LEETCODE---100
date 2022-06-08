@@ -148,9 +148,6 @@ class Tree
         // {
         //   return li ; 
         // }
-       
-        // levelorder(node,li);
-        // return li;
         
         Queue<Node> qu = new LinkedList<>();
         Stack<Integer> st = new Stack<>();
