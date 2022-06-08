@@ -32,23 +32,11 @@ class Solution {
          
     }
     
-//     public void maxBST(TreeNode root)
-//     {
-       
-//       if(root.left==null)
-//       {
-//         sum = root.val;
-//           return ; 
-//       }
-//         maxBST(root.left);
-//     }
-    
     public TreeNode convertBST(TreeNode root) {
          if(root==null)
         {
             return null;
         }
-        // maxBst(root);
         greterBST(root);
         
         return root;
