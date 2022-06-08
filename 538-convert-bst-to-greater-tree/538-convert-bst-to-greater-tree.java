@@ -37,6 +37,7 @@ class Solution {
         {
             return null;
         }
+        sum=0;
         greterBST(root);
         
         return root;
