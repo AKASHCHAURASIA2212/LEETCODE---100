@@ -126,20 +126,20 @@ class Node
 class Tree
 {
 
-     public void levelorder(Node root,ArrayList<Integer> li)
-     {
-           if(root==null)
-           {
-               return;
-           }
+    //  public void levelorder(Node root,ArrayList<Integer> li)
+    //  {
+    //       if(root==null)
+    //       {
+    //           return;
+    //       }
          
-         levelorder(root.left,li);
-         levelorder(root.right,li);
+    //      levelorder(root.left,li);
+    //      levelorder(root.right,li);
          
-         li.add(root.data);
+    //      li.add(root.data);
          
-         // sideView(root.left,li);
-     }
+    //      // sideView(root.left,li);
+    //  }
     public ArrayList<Integer> reverseLevelOrder(Node node) 
     {
            ArrayList<Integer> li = new ArrayList<>();
