@@ -1,63 +1,60 @@
-// class Solution {
-//     public int numEnclaves(int[][] grid) {
-        
-//     }
-// }
-
 class Solution {
     
-    boolean flag = true;
-    int len = 0;
-    
-    // static int[][] dir = {{-1,0},{0,1},{1,0},{0,-1}};
-    
-    public void jump(int[][] grid ,int i,int j,boolean[][] vis)
+    public static void treverse(int[][] grid,int i,int j)
     {
-        if(i<0 || j>=grid[0].length || i>=grid.length || j<0)
-        {
-            flag=false;
-           return;
-        }
-        else if(vis[i][j]==true)
+        if(i<0 || j<0 || i>=grid.length || j>=grid[0].length)
         {
             return;
         }
-        else if(grid[i][j]==0)
-        {
-            return;
+        else if(grid[i][j]==-1 || grid[i][j]==0){
+           return ;
         }
+        grid[i][j]=-1;
+        treverse(grid,i-1,j);
+        treverse(grid,i+1,j);
+        treverse(grid,i,j+1);
+        treverse(grid,i,j-1);
         
-        ++len;
-        vis[i][j]=true;
-        jump(grid,i-1,j,vis);
-        jump(grid,i,j+1,vis);
-        jump(grid,i+1,j,vis);
-        jump(grid,i,j-1,vis);
-     
+        
     }
     public int numEnclaves(int[][] grid) {
         
-        int count=0;
-        boolean[][] vis = new boolean[grid.length][grid[0].length];
-        for(int i = 0 ;i<grid.length;i++){
-
-         for(int j = 0;j<grid[0].length;j++)
-         {
-
-              if(grid[i][j]==1 && vis[i][j]==false)
+        for(int i = 0;i<grid.length;i++)
+        {
+           for(int j=0;j<grid[0].length;j++)
+           {
+              if(i==0 || i==grid.length-1 || j==0 || j==grid[0].length-1)
               {
-                  flag=true;
-                  len=0;
-                jump(grid,i,j,vis);
-                  
-                  if(flag)
-                  {
-                   count+=len;   
-                  }
-                
+                 if(grid[i][j]==1)
+                 {
+                    treverse(grid,i,j);
+                 }
               }
-         }
+           }
         }
+        int count=0;
+        
+        for(int i = 0;i<grid.length;i++)
+        {
+           for(int j=0;j<grid[0].length;j++)
+           {
+              if(grid[i][j]==1)
+              {
+                 count++;
+              }
+           }
+        }
+        
+        //  for(int i = 0;i<grid.length;i++)
+        // {
+        //    for(int j=0;j<grid[0].length;j++)
+        //    {
+        //       System.out.print(grid[i][j]+" ");
+        //    }
+        //      System.out.println();
+        // }
+        
         return count;
+        
     }
 }
