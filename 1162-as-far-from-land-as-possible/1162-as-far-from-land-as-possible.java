@@ -48,37 +48,37 @@ class Solution {
                }
             }
         }
-        boolean[][] vis = new boolean[n][m];
+        // boolean[][] vis = new boolean[n][m];
         while(qu.size()>0)
         {
             pair rem = qu.remove();
             // vis[rem.x][rem.y]=true;
             // mat[rem.x][rem.y]=rem.d;
             
-            if(vis[rem.x][rem.y])
+            if(mat[rem.x][rem.y]==-1)
             {
                continue;
             }
             
-            vis[rem.x][rem.y]=true;
+            mat[rem.x][rem.y]=-1;
     
             if(maxlevel<rem.d)
             {
                 maxlevel=rem.d;
             }
             
-            addN(rem.x-1,rem.y,rem.d+1,vis,qu);
-            addN(rem.x+1,rem.y,rem.d+1,vis,qu);
-            addN(rem.x,rem.y-1,rem.d+1,vis,qu);
-            addN(rem.x,rem.y+1,rem.d+1,vis,qu);   
+            addN(rem.x-1,rem.y,rem.d+1,mat,qu);
+            addN(rem.x+1,rem.y,rem.d+1,mat,qu);
+            addN(rem.x,rem.y-1,rem.d+1,mat,qu);
+            addN(rem.x,rem.y+1,rem.d+1,mat,qu);   
         }
         
         return maxlevel==0?-1:maxlevel;
     }
         
-        public void addN(int x,int y,int d,boolean[][] vis,Queue<pair> qu)
+        public void addN(int x,int y,int d,int[][] mat,Queue<pair> qu)
         {
-           if(x<0 || y<0 || x>=vis.length || y>=vis[0].length || vis[x][y]==true)
+           if(x<0 || y<0 || x>=mat.length || y>=mat[0].length || mat[x][y]==-1)
            {
                return;
            }
