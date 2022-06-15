@@ -35,7 +35,7 @@ class Solution {
         
         int n = mat.length;
         int m = mat[0].length;
-        int maxlevel = -1;
+        int maxlevel =0;
         
         Queue<pair> qu = new LinkedList<>();
         for(int i=0;i<n;i++)
@@ -49,7 +49,6 @@ class Solution {
             }
         }
         boolean[][] vis = new boolean[n][m];
-        int[][] ans = new int[n][m];
         while(qu.size()>0)
         {
             pair rem = qu.remove();
@@ -62,8 +61,7 @@ class Solution {
             }
             
             vis[rem.x][rem.y]=true;
-            ans[rem.x][rem.y]=rem.d;
-            
+    
             if(maxlevel<rem.d)
             {
                 maxlevel=rem.d;
