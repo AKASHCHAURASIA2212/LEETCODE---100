@@ -19,7 +19,7 @@ public class Solution extends VersionControl {
             
             if(bad==true)
             {
-                pmid = Math.min(pmid,mid);
+                pmid = mid;
                 ri=mid-1;
             }
             else
