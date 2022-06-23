@@ -1,71 +1,79 @@
 class Solution {
-    class pair{
-        int vtx;
-        int clr;
-        public pair(int vtx,int clr){
+    
+    public class Pair{
+          int vtx;
+          int clr;
+        public Pair(int vtx,int clr){
             this.vtx=vtx;
             this.clr=clr;
         }
     }
     
-    public boolean treverse(int[][] graph,int[] visited,int v)
+    public boolean isBip(int graph[][],int v , int[] vis)
     {
-        Queue<pair> qu = new LinkedList<>();
-        qu.add(new pair(v,1));
+        Queue<Pair> qu = new LinkedList<>();
+        //  0 unvisted
+        //  1 red
+        // -1 blue
+        qu.add(new Pair(v,1));
         
         while(qu.size()>0)
         {
-
-           // remove 
-           pair rem = qu.remove();
-           
-            //mark*
-            if(visited[rem.vtx]!=0)
+            // r m* w a*
+            
+            Pair rem = qu.remove();
+            
+            System.out.println("v-->"+rem.vtx+" clr-->"+rem.clr);
+            if(vis[rem.vtx]!=0)
             {
-              int oc = visited[rem.vtx];
-                int nc = rem.clr;
-                if(oc==nc)
-                {
-                    continue;
-                }
-                else
+                //some work
+                int oldclr = vis[rem.vtx];
+                int newclr = rem.clr;
+                
+                if(oldclr!=newclr)
                 {
                     return false;
                 }
             }
             
-            visited[rem.vtx]=rem.clr;
+            vis[rem.vtx]=rem.clr;
             
-            for(int nbr : graph[rem.vtx])
+            // System.out.println("addnbr - v "+v);
+            for(int e : graph[rem.vtx])
             {
-                if(visited[nbr]==0)
+                if(vis[e]==0)
                 {
-                    qu.add(new pair(nbr,rem.clr * -1));
+                    // System.out.println("addnbr - v-->"+v+" nbr--> "+ e);
+                    qu.add(new Pair(e,rem.clr * -1));
                 }
             }
-            
         }
         
         return true;
-    }
+    } 
     public boolean isBipartite(int[][] graph) {
+        
+              
         int n = graph.length;
-        int m = graph[0].length;
-        int[] visited  = new int[n];
+    
+        int[] vis = new int[n];
+        
+        Queue<Pair> qu = new LinkedList<>();
         
         for(int v=0;v<n;v++)
         {
-            if(visited[v]==0)
+            if(vis[v]==0)
             {
-               boolean isBip=treverse(graph,visited,v);
-                if(!isBip)
+               boolean isbip = isBip(graph,v,vis);
+                
+                if(!isbip)
                 {
                    return false;
                 }
             }
+           
         }
         
         return true;
-        
     }
 }
