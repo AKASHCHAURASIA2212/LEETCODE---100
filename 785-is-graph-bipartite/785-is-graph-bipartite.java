@@ -30,7 +30,11 @@ class Solution {
                 int oldclr = vis[rem.vtx];
                 int newclr = rem.clr;
                 
-                if(oldclr!=newclr)
+                if(oldclr==newclr)
+                {
+                    continue;
+                }
+                else
                 {
                     return false;
                 }
