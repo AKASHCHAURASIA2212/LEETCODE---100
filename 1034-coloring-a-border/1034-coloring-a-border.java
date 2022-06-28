@@ -101,10 +101,7 @@ class Solution {
         
         for(Pair ele : al)
         {
-            if(ele.border)
-            {
-                grid[ele.i][ele.j]=color;
-            }
+                grid[ele.i][ele.j]=color; 
         }
         
         return grid;
