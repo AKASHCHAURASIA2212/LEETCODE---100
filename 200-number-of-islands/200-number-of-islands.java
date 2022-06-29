@@ -1,6 +1,6 @@
 class Solution {
     
-    static int[][] dir = {{-1,0},{0,1},{1,0},{0,-1}};
+    // static int[][] dir = {{-1,0},{0,1},{1,0},{0,-1}};
     
     public void jump(char[][] grid ,int i,int j,boolean[][] vis)
     {
