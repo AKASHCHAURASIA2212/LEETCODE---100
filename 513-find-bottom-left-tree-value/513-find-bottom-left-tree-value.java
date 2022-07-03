@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-      public List<Integer> rightSideView(TreeNode root)
+          public List<Integer> leftSideView(TreeNode root)
     {
       List<Integer> list = new ArrayList<Integer>();
       
@@ -34,7 +34,7 @@ class Solution {
           {
               TreeNode temp = qu.remove();
               
-              if(i==size-1)
+              if(i==0)
               {
                   list.add(temp.val);
               }
@@ -52,5 +52,12 @@ class Solution {
       }
       
       return list;
+    }
+    public int findBottomLeftValue(TreeNode root) {
+        
+        List<Integer> li = leftSideView(root);
+        
+        return li.get(li.size()-1);
+        
     }
 }
