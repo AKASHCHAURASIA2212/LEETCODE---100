@@ -17,8 +17,7 @@ class Solution {
         for(int i=0;i<operations.length;i++)
         {
            String str = operations[i];
-               int ans = opretion(x,str);
-               x = ans;
+               x = opretion(x,str);
         }
         return x;
     }
