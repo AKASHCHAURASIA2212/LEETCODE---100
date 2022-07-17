@@ -9,32 +9,66 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
+    
+    public ListNode Reverse(ListNode head)
+    {
         if(head.next==null)
         {
-            return true ;
+            return head ;
         }
-        ArrayList<Integer> al = new ArrayList<>();
+        ListNode prev = null ,curr = head , next = head.next ;
         
-        while(head!=null)
+        while(next!=null)
         {
-            int val = head.val ; 
-            al.add(val);
-            head=head.next;
+            next = curr.next ; 
+            curr.next = prev ;
+            prev = curr ;
+            curr = next ;
+        }
+        return prev ;
+    }
+    public boolean isPalindrome(ListNode head) {
+        
+        ListNode slow =head ,fast = head ;
+        
+        while(fast!=null && fast.next!=null)
+        {   System.out.println("slow-->"+slow.val);
+           slow = slow.next ; 
+         System.out.println("slow-->"+slow.val);
+            fast = fast.next.next ;
         }
         
-        int i=0,j=al.size()-1;
+        ListNode nhead = Reverse(slow);
         
-        while(i<=j)
+        // System.out.println("hval-->"+head.val+" nhval-->"+nhead.val);
+
+        while( head!=null && nhead!=null)
         {
-            if(al.get(i)!=al.get(j))
+            System.out.println("hval-->"+head.val+" nhval-->"+nhead.val);
+            if(head.val!=nhead.val)
             {
-                return false;
+                return false ; 
             }
-            i++;
-            j--;
+            head = head.next ;
+            nhead = nhead.next ;
         }
         
-        return true;
+        if(head!=null)
+        {
+          if(head.next!=null)
+          {
+              return false;
+          }
+        }
+        
+        if(nhead!=null)
+        {
+          if(nhead.next!=null)
+          {
+              return false;
+          }
+        }
+        
+        return true ; 
     }
 }
