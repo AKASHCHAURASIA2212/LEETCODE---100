@@ -7,12 +7,12 @@ class Solution {
         {
    
             
-            while(i<j && "aeiouAEIOU".indexOf(str.charAt(i)+"")==-1)
+            while(i<j && "aeiouAEIOU".indexOf(str.charAt(i))==-1)
             {
                 i++;
             }
-            
-            while(i<j && "aeiouAEIOU".indexOf(str.charAt(j)+"")==-1)
+        
+            while(i<j && "aeiouAEIOU".indexOf(str.charAt(j))==-1)
             {
                 j--;
             }
