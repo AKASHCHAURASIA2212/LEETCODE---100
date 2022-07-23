@@ -30,8 +30,3 @@ class Solution {
         return count+1 ; 
     }
 }
-// class Solution {
-//     public int maxChunksToSorted(int[] arr) {
-        
-//     }
-// }
