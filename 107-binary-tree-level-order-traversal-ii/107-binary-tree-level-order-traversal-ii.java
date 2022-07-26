@@ -14,65 +14,69 @@
  * }
  */
 class Solution {
-    public List<List<Integer>> levelOrderBottom(TreeNode node) {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
         
-      List<List<Integer>> list = new ArrayList<>();
-        
-        if(node==null)
+        if(root==null)
         {
-           return list;
+            return list;
         }
-      Queue<TreeNode> qu = new LinkedList<>();
-      Stack<List<Integer>> st = new Stack<>();
-      qu.add(node);
-      qu.add(null);
-      
-      while(qu.size()>0)
-      {
-          int size = qu.size();
-          List<Integer> mylist = new ArrayList<>();
-          while(size-->0)
-          {
-              TreeNode temp = qu.remove();
-               
-              if(temp!=null)
-              {
-                  mylist.add(temp.val);
-
-                  if(temp.left!=null)
+        
+        Queue<TreeNode> qu = new LinkedList<>();
+        Stack<TreeNode> st = new Stack<>();
+        
+        qu.add(root);
+        qu.add(null);
+        
+        while(qu.size()>0)
+        {
+            
+            TreeNode rem = qu.remove();
+            st.push(rem);
+            
+            if(rem!=null){
+                    if(rem.right!=null)
+                   {
+                    qu.add(rem.right);
+                   }
+                  if(rem.left!=null)
                   {
-                      qu.add(temp.left);
+                    qu.add(rem.left);
                   }
-                  
-                  if(temp.right!=null)
-                  {
-                      qu.add(temp.right);
-                  }
-
-                  
-              }
-              else{
-                  st.add(mylist);
-                  if(qu.size()>0)
-                  {
-                    qu.add(null);
-                  }
-              }
-         
-          } 
+            }
+            else
+            {
+               if(qu.size()>0)
+               {
+                   qu.add(null);
+               }
+            }
+           
+            
+        }
+        
+     
+        ArrayList<Integer> al = new ArrayList<>();
+        st.pop();
+        while(st.size()>0)
+        {
+            
+            TreeNode rem = st.pop();
+            if(rem!=null)
+              System.out.println(rem.val);
+            
+            if(rem!=null)
+            {
+                al.add(rem.val);
+            }
+            else
+            {
+                list.add(al);
+                al = new ArrayList<>();
+            }
+        }
+        list.add(al);
+        
+        return list ;
     }
-        
-    // System.out.println(st);
-      while(st.size()>0)
-      {
-          List<Integer> li = st.pop();
-              list.add(li);
-      }
-        
-    
-        // System.out.println(li);
-      
-      return list;
-  }
-    
 }
