@@ -14,18 +14,27 @@
  * }
  */
 class Solution {
-          public List<Integer> leftSideView(TreeNode root)
+    
+    public int height(TreeNode root)
     {
-      List<Integer> list = new ArrayList<Integer>();
-      
+        if(root==null)
+        {
+            return 0;
+        }
+        
+        int lh = height(root.left);
+        int rh = height(root.right);
+        
+        return Math.max(lh,rh)+1;
+    }
+    public int findBottomLeftValue(TreeNode root) {
+        
+      int ht = height(root);
       Queue<TreeNode> qu = new LinkedList<>();
       
-      if(root==null)
-      {
-          return list;
-      }
+
       qu.add(root);
-      
+      int count=1;
       while(qu.size()>0)
       {
           int size  = qu.size();
@@ -34,9 +43,9 @@ class Solution {
           {
               TreeNode temp = qu.remove();
               
-              if(i==0)
+              if(i==0 && count==ht)
               {
-                  list.add(temp.val);
+                  return temp.val;
               }
               
               if(temp.left!=null)
@@ -49,15 +58,9 @@ class Solution {
                   qu.add(temp.right);
               }
           }
+          count++;
       }
       
-      return list;
-    }
-    public int findBottomLeftValue(TreeNode root) {
-        
-        List<Integer> li = leftSideView(root);
-        
-        return li.get(li.size()-1);
-        
+     return -1;
     }
 }
