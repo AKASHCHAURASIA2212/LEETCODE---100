@@ -31,9 +31,9 @@ class Solution {
             frequency.add(hm.get(i));
         }
         // System.out.println(frequency);
-        Display(frequency);
+        // Display(frequency);
         Collections.sort(frequency, Collections.reverseOrder());
-        Display(frequency);
+        // Display(frequency);
         for(int i: frequency){
             fi++;
             result += i;
