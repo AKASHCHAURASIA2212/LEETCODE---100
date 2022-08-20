@@ -1,35 +1,45 @@
 class Solution {
-    public int fib(int n) {
-        int[] dp = new int[n+1];
-        Arrays.fill(dp,-1);
-        fibbo(n,dp);
-        
-        for(int i=0;i<=n;i++)
-        {
-            System.out.print(dp[i]+" ");
-        }
-        return dp[n];
-    }
     
-    public int fibbo(int n,int[]dp)
+    // normal recursion 
+//     public int fib(int n) {
+        
+//         if(n==0 || n==1)
+//         {
+//             return n ;
+//         }
+//         int n1 = fib(n-1);
+//         int n2 = fib(n-2);
+        
+//         int no = n1+n2 ; 
+//         return no ;
+//     }
+    
+    public int fibb(int x , int[]dp)
     {
-        if(n==0 || n==1)
+        if(x==0 || x==1)
         {
-            dp[n]=n;
+            return dp[x]=x ;
+        }
+        
+        if(dp[x]!=0)
+        {
+            return dp[x];
+        }
+        
+        int n1 = fibb(x-1,dp);
+        int n2 = fibb(x-2,dp);
+        
+        dp[x] = n1+n2 ;
+        
+        return dp[x];
+        
+    }
+        public int fib(int n) {
+        
+        int[] dp = new int[n+1];
             
-            return n;
-        }
-        
-        if(dp[n]!=-1)
-        {
-            return dp[n];
-        }
-        
-        int ans1 = fibbo(n-1,dp);
-        int ans2 = fibbo(n-2,dp);
-        
-        dp[n] = ans1+ans2;
-        
-        return dp[n];
+           return  fibb(n,dp);
+            
+            
     }
 }
