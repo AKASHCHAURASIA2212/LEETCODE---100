@@ -14,34 +14,27 @@
  * }
  */
 class Solution {
-    
-    public void helper(TreeNode root,int val)
+    public TreeNode helper(int[] pre ,int min ,int max)
     {
-        if(root.left==null && root.val>val)
-        {
-            TreeNode node = new TreeNode(val);
-            root.left=node;
+        if(idx==pre.length){
+            return null;
         }
-        else if(root.right==null&& root.val<val)
+        else if(pre[idx]>min && pre[idx]<max)
         {
-          TreeNode node = new TreeNode(val);
-            root.right=node;
+            TreeNode node  = new TreeNode();
+            node.val = pre[idx];
+            idx++;
+            node.left = helper(pre,min,node.val);
+            node.right = helper(pre,node.val,max);
+            return node ;
+            
         }
-        
-        if(root.left!=null && root.val>val)
-        {
-             helper(root.left,val);
-        }
-        else if(root.right!=null && root.val<val)
-        {
-             helper(root.right,val);
+        else{
+          return null ;
         }
     }
+    int idx=0;
     public TreeNode bstFromPreorder(int[] preorder) {
-        TreeNode root = new TreeNode(preorder[0]);
-        for(int i=1;i<preorder.length;i++){
-            helper(root,preorder[i]);
-        }
-        return root;
+        return helper(preorder,Integer.MIN_VALUE,Integer.MAX_VALUE);
     }
 }
