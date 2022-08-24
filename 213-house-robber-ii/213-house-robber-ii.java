@@ -55,8 +55,8 @@ class Solution {
                     c2=dp2[i];
                 }
         }
-        Display(dp1);
-        Display(dp2);
+        // Display(dp1);
+        // Display(dp2);
         
         return Math.max(Math.max(c1,p1),Math.max(c2,p2));
         // return Math.max(Math.max(dp1[0],dp1[1]),Math.max(dp2[0],dp2[1]));
