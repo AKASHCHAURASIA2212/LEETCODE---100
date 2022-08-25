@@ -14,32 +14,21 @@
  * }
  */
 class Solution {
-    
-    public long prev = Long.MIN_VALUE;
+    long prev = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
+        if(root==null)return true ;
         
+        boolean ans1 = isValidBST(root.left);
+        if(ans1==false)return false ;
         
-        if(root==null)
-        {
-          return true;
-        }
+        if(prev>=root.val)return false;
         
-        boolean lcall =  isValidBST(root.left);
-        if(lcall==false)
-            return false;
-        if(prev>=root.val )
-        {
-           return false;
-        }
+        prev = root.val ;
         
-        prev = root.val;
+        boolean ans2 = isValidBST(root.right);
+        if(ans2==false)return false ;
         
-        boolean rcall = isValidBST(root.right);
-        
-        if(rcall==false)
-            return false;
-        
-        return true;
+        return true ;
         
     }
 }
