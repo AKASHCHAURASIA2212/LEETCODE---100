@@ -11,7 +11,7 @@ class Solution {
             int min = Integer.MAX_VALUE-1;
             for(int jump =nums[i] ; jump>=1;jump--)
             {
-                if(jump+i<dp.length-1)
+                if(jump+i<dp.length)
                 {
                     
                     min = Math.min(min,dp[jump+i]);
