@@ -22,53 +22,97 @@ class Node {
 */
 
 class Solution {
-    public Node connect(Node root) {
+    
+//     public void nodeconn(Node root)
+//     {
+//         if(root==null)
+//         {
+//             return  ;
+//         }
+//         else if(root.left!=null && root.right!=null)
+//         {
+//             root.left.next = root.right ;
+//         }
         
-        if(root==null)
-        {
-            return null;
-        }
-        Queue<Node> qu = new LinkedList<>();
-        Queue<Node> qu2 = new LinkedList<>();
-        qu.add(root);
-        // System.out.print(qu);
-        while(qu.size()>0)
-        {    
-            qu.add(null);
-            int size = qu.size();
-            while(size-->0)
-            {
-              Node temp = qu.remove();
-                qu2.add(temp);
+//         if(root.next!=null && root.right!=null)
+//         {
+//                 root.right.next = root.next.left ;
+//             nodeconn(root.next);
+//         }
+//         nodeconn(root.left);
         
-                
-                if(temp==null)
-                {
-                    continue;
-                }
-                
-                if(temp.left!=null)
-                {
-                    qu.add(temp.left);
-                }
-                
-                if(temp.right!=null)
-                {
-                    qu.add(temp.right);
-                }
+        
+//     }
+        public Node connect(Node root) {
             
-            }
-        }    
-        while(qu2.size()>1)
-        {
-            Node temp = qu2.remove();
-            Node peek = qu2.peek();
-            if(temp!=null)
-            {
-                temp.next=peek;
-            }
-        } 
-        return root;
+            Node p1 = root;
+                
+                while(p1!=null)
+                {
+                    Node p2 = p1 ;
+                    
+                    while(p2!=null)
+                    {
+                        if(p2.left!=null){
+                        p2.left.next = p2.right;
+                        }
+                        if(p2.right!=null && p2.next!=null){
+                        p2.right.next = p2.next.left;
+                        }
+                        p2=p2.next;
+                    }
+                    p1=p1.left ;
+                }
+            return root ;
+        }
+
+//     public Node connect(Node root) {
         
-    }
+//         if(root==null)
+//         {
+//             return null;
+//         }
+//         Queue<Node> qu = new LinkedList<>();
+//         Queue<Node> qu2 = new LinkedList<>();
+//         qu.add(root);
+//         // System.out.print(qu);
+//         while(qu.size()>0)
+//         {    
+//             qu.add(null);
+//             int size = qu.size();
+//             while(size-->0)
+//             {
+//               Node temp = qu.remove();
+//                 qu2.add(temp);
+        
+                
+//                 if(temp==null)
+//                 {
+//                     continue;
+//                 }
+                
+//                 if(temp.left!=null)
+//                 {
+//                     qu.add(temp.left);
+//                 }
+                
+//                 if(temp.right!=null)
+//                 {
+//                     qu.add(temp.right);
+//                 }
+            
+//             }
+//         }    
+//         while(qu2.size()>1)
+//         {
+//             Node temp = qu2.remove();
+//             Node peek = qu2.peek();
+//             if(temp!=null)
+//             {
+//                 temp.next=peek;
+//             }
+//         } 
+//         return root;
+        
+//     }
 }
