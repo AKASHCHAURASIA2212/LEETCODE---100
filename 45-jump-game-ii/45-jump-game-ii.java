@@ -20,11 +20,11 @@ class Solution {
             }
             dp[i]=min+1;
         }
-        for(int x : dp)
-        {
-            System.out.print(x+" ");
-        }
-        System.out.println();
+        // for(int x : dp)
+        // {
+        //     System.out.print(x+" ");
+        // }
+        // System.out.println();
         return dp[0];
     }
 }
