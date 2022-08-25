@@ -7,7 +7,7 @@ class Solution {
             char ch = magazine.charAt(i);
             hm.put(ch,hm.getOrDefault(ch,0)+1);
         }
-        System.out.println(hm);
+        // System.out.println(hm);
         
           for(int i=0;i<ransomNote.length();i++)
         {
