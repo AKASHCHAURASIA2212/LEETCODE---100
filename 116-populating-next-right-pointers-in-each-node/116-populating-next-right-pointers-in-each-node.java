@@ -28,12 +28,9 @@ class Solution {
         {
             return null;
         }
-        
         Queue<Node> qu = new LinkedList<>();
         Queue<Node> qu2 = new LinkedList<>();
-        
         qu.add(root);
-        
         // System.out.print(qu);
         while(qu.size()>0)
         {    
@@ -61,8 +58,7 @@ class Solution {
                 }
             
             }
-        }
-        
+        }    
         while(qu2.size()>1)
         {
             Node temp = qu2.remove();
@@ -71,12 +67,7 @@ class Solution {
             {
                 temp.next=peek;
             }
-        }
-        
-    
-        
-        // System.out.println(qu2);
-        
+        } 
         return root;
         
     }
