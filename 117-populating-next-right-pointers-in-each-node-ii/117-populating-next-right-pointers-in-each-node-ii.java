@@ -22,62 +22,48 @@ class Node {
 */
 
 class Solution {
-        public Node connect(Node root) {
+    public Node connect(Node root) {
         
-        if(root==null)
+        Node curr = root ;
+        Node head = null ;
+        Node tail = null ;
+        
+        while(curr!=null)
         {
-            return null;
-        }
-        
-        Queue<Node> qu = new LinkedList<>();
-        Queue<Node> qu2 = new LinkedList<>();
-        
-        qu.add(root);
-        
-        // System.out.print(qu);
-        while(qu.size()>0)
-        {    
-            qu.add(null);
-            int size = qu.size();
-            while(size-->0)
-            {
-              Node temp = qu.remove();
-                qu2.add(temp);
-        
-                
-                if(temp==null)
-                {
-                    continue;
+            while(curr!=null){
+                if(curr.left!=null) {
+                    if(head==null){
+                        head = curr.left;
+                        tail = curr.left;
+                    }
+                    else
+                    {
+                        tail.next = curr.left ;
+                        tail = curr.left ;
+                        
+                    }
                 }
-                
-                if(temp.left!=null)
-                {
-                    qu.add(temp.left);
+                if(curr.right!=null){
+                    if(head==null){
+                        head = curr.right;
+                        tail = curr.right;
+                    }
+                    else
+                    {
+                        tail.next = curr.right ;
+                        tail = curr.right ;
+                        
+                    }
                 }
-                
-                if(temp.right!=null)
-                {
-                    qu.add(temp.right);
-                }
-            
+                curr=curr.next ;
             }
+
+        
+           curr=head;
+            head=null;
+            tail=null;
         }
-        
-        while(qu2.size()>1)
-        {
-            Node temp = qu2.remove();
-            Node peek = qu2.peek();
-            if(temp!=null)
-            {
-                temp.next=peek;
-            }
-        }
-        
-    
-        
-        // System.out.println(qu2);
         
         return root;
-        
     }
 }
