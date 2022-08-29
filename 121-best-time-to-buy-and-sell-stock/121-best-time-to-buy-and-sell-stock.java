@@ -19,17 +19,7 @@ class Solution {
             }
         }
         
-       
-        
-        System.out.println("Max-->"+max);
-        // System.out.println("Min-->"+min);
-        
-        if(max>0){
-             return max ;
-        }
-        
-        
-        return 0;
+        return max>0?max:0;
         
     }
 }
