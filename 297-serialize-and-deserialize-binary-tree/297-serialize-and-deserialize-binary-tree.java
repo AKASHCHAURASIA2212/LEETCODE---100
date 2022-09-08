@@ -38,7 +38,7 @@ public class Codec {
         
         helper(root,sb);
         
-        System.out.println("-->"+sb);
+        // System.out.println("-->"+sb);
         
         return sb.toString();
     }
