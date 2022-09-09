@@ -40,7 +40,7 @@ public class Codec {
         
         StringBuilder sb = new StringBuilder();
         sb = helper(root,sb);
-        System.out.println(sb);
+        // System.out.println(sb);
         return sb.toString();
         
     }
