@@ -8,108 +8,86 @@
  * }
  */
 public class Codec {
-
+    public class Pair{
+        TreeNode root ;
+        int state;
+        public Pair(){}
+        public Pair(TreeNode root, int state){
+            this.root=root;
+            this.state=state;
+        } 
+    }
     
-    void helper (TreeNode node , StringBuilder sb)
-    {
-        if(node==null)
-        {
+    public StringBuilder helper(TreeNode root,StringBuilder sb ) {
+        
+        if(root==null){
             sb.append(".");
             sb.append(" ");
-            return;
+            return sb ;
         }
         
-        sb.append(node.val);
-        sb.append(" ");
-        helper(node.left,sb);
-        helper(node.right,sb);
+        sb.append(root.val+" ");
+        
+        sb = helper(root.left,sb);
+        sb = helper(root.right,sb);
+        
+        return sb ;
         
     }
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         
-      if(root==null)
-      {
-          return "";
-      }
-      
         StringBuilder sb = new StringBuilder();
-        
-        helper(root,sb);
-        
-        // System.out.println("-->"+sb);
-        
+        sb = helper(root,sb);
+        System.out.println(sb);
         return sb.toString();
+        
     }
 
-    // Decodes your encoded data to tree.
     
-    public class pair{
-       TreeNode root;
-        int state;
-        
-        public pair(TreeNode root,int state)
-        {
-            this.root=root;
-            this.state=state;
-        }
-         public pair(int state)
-        {
-            this.state=state;
-        }
-        
-    }
+    
+    // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-       
-        if(data.length()==0)
-        {
-           return null ; 
+        if(data.charAt(0)=='.'){
+            return null;
         }
+        Stack<Pair> st = new Stack<>();
+        String[] Data = data.split(" "); 
+        TreeNode root = new TreeNode(Integer.parseInt(Data[0]));
         
-       Stack<pair> st = new Stack<>();
-        String[] darray = data.split(" ");
-        TreeNode root = new TreeNode(Integer.parseInt(darray[0]));
-        st.push(new pair(root,0));
-        int i = 1;
-        while(st.size()>0 && i<data.length())
-        {
-            pair peek = st.peek();
+        Pair mypair = new Pair(root,0);
+        st.add(mypair);
+        int i=1;
+        while(st.size()>0 && i<data.length()){
             
-            if(peek.state==0)
-            {
-                peek.state++;
-                String str = darray[i];
-                if(!str.contains("."))
+            Pair rem = st.peek();
+            // System.out.println(Data[i]);
+            if(rem.state==0){
+                if(Data[i].equals(".")==false) 
                 {
-                TreeNode myroot = new TreeNode(Integer.parseInt(darray[i]));
-                peek.root.left = myroot;
-                st.push(new pair((myroot),0));
+                TreeNode left = new TreeNode(Integer.parseInt(Data[i]));
+                rem.root.left=left;
+                st.add(new Pair(left,0));
                 }
-              
-                i++;
-
-            }
-            else if(peek.state==1)
-            {
-               peek.state++;
-                String str = darray[i];
-                if(!str.contains("."))
-                {
-                TreeNode myroot = new TreeNode(Integer.parseInt(darray[i]));
-                peek.root.right = myroot;
-                st.push(new pair((myroot),0));
-                }
-              
+                rem.state++;
                 i++;
             }
-            else
-            {
-             st.pop();
+            else if(rem.state==1){
+                  if(Data[i].equals(".")==false) {
+                TreeNode right = new TreeNode(Integer.parseInt(Data[i]));
+                rem.root.right=right;
+                st.add(new Pair(right,0));
+                }
+                rem.state++;
+                i++;
+            }
+            else{
+                st.pop();
+                // i++;
             }
         }
-        
-        return root;
+       return root ; 
     }
 }
 
