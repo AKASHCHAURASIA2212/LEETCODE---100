@@ -1,5 +1,4 @@
 class Solution {
-    public String code[] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
     
     public String countAndSay(int n) {
         if(n==1){
