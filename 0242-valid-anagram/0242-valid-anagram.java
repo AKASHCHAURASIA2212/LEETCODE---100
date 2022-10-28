@@ -12,7 +12,7 @@ class Solution {
                 hm.put(ch,1);
             }
         }
-        System.out.println(hm);
+        // System.out.println(hm);
         for(int i=0;i<t.length();i++){
             char ch = t.charAt(i);
             if(hm.containsKey(ch))
@@ -28,7 +28,7 @@ class Solution {
                 return false;
             }
         }
-           System.out.println(hm);
+           // System.out.println(hm);
         
         return hm.size()==0?true:false;
     }
