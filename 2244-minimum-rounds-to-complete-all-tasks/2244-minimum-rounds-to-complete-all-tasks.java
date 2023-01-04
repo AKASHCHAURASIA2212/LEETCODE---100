@@ -9,8 +9,8 @@ class Solution {
             }
         }
          Set<Integer> keys = hm.keySet();
-         System.out.println(keys);
-         System.out.println(hm);
+         // System.out.println(keys);
+         // System.out.println(hm);
         
        
         // check if any number occurs only one time
@@ -26,7 +26,7 @@ class Solution {
             int val = hm.get(key);
             int div = val/3;
             int mod = val%3;
-            System.out.println("key--> "+key+" div--> "+div+" mod--> "+mod);
+            // System.out.println("key--> "+key+" div--> "+div+" mod--> "+mod);
             count+=div;
             if(mod!=0){
                 count++;
