@@ -31,11 +31,10 @@ class Solution {
         String ans = str2.substring(0,len);
         
           if(check(str2,ans)){
-                if(str1.contains(ans) && str1.length()%ans.length()==0){
                         if(check(str1,ans)){
                             return ans;
                         }
-                }
+                
             }
         return "";
     }
