@@ -8,6 +8,9 @@ class Solution {
     }
     public int numDifferentIntegers(String word) {
        word = word.replaceAll("[abcdefghijklmnopqrstuvwxyz]", ",");
+        
+        // String.replaceAll("[char1char2]", "replacement");
+
         String[] str = word.split(",");
         // System.out.println(word);
         // System.out.println(word);
