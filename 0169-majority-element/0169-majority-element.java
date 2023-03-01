@@ -23,6 +23,9 @@ class Solution {
 
     }
     public int majorityElement(int[] nums) {
-        return solve(nums);
+        // return solve(nums);
+        
+        Arrays.sort(nums);
+        return (nums[nums.length / 2]);
     }
 }
