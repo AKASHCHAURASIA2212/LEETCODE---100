@@ -8,16 +8,11 @@ class Solution {
         int i=1;
         int lastNotContain = 1;
         while(k>=1){
-            if(set.contains(i)){
-                System.out.println("Contain-> "+i);
-                // de nothing
-                i++;
-            }else{
-                System.out.println("Not-Contain-> "+i);
+            if(set.contains(i)==false){
                 lastNotContain=i;
              k--;
-                i++;
             }
+            i++;
         }
         
         return lastNotContain;
